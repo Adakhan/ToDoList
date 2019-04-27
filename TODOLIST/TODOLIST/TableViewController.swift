@@ -9,7 +9,10 @@
 import UIKit
 
 class TableViewController: UITableViewController {
+    var itemTitle1 = ""
+    var itemSubtitle1 = ""
     
+
     @IBAction func pushEditAction(_ sender: Any) {
         tableView.setEditing(!tableView.isEditing, animated: true)
     }
@@ -72,22 +75,31 @@ class TableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return todoItems.count
     }
+    
 
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let currentItem = todoItems[indexPath.row]
+
+        itemTitle1 = (currentItem["Name"] as! String)
+        itemSubtitle1 = (currentItem["Description"] as! String)
+        performSegue(withIdentifier: "detailSegue", sender: self)
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier", for: indexPath)
         cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellIdentifier")
-        
+        cell.accessoryType = .detailDisclosureButton
+
         let currentItem = todoItems[indexPath.row]
         
         cell.textLabel?.text = (currentItem["Name"] as! String)
         cell.detailTextLabel?.text = (currentItem["Description"] as! String)
         
         if (currentItem["isCompleted"] as? Bool) == true {
-            cell.accessoryType = .checkmark
+            cell.imageView?.image = UIImage(named: "check.png")
         } else {
-            cell.accessoryType = .none
+            cell.imageView?.image = UIImage(named: "uncheck.png")
         }
         
         return cell
@@ -119,10 +131,11 @@ class TableViewController: UITableViewController {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
+        
         if changeState(at: indexPath.row)  {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+            tableView.cellForRow(at: indexPath)?.imageView?.image = UIImage(named: "check.png")
         } else {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+            tableView.cellForRow(at: indexPath)?.imageView?.image = UIImage(named: "uncheck.png")
         }
        
     }
@@ -147,14 +160,21 @@ class TableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        let DetailTableViewController = segue.destination as! DetailTableViewController
+        DetailTableViewController.subtitleString = itemSubtitle1
+        DetailTableViewController.titleString = itemTitle1
+
+        
+        
     }
-    */
+    
 
 }
