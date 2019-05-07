@@ -18,50 +18,9 @@ class TableViewController: UITableViewController {
     }
     
     
-    @IBAction func pushAddAction(_ sender: Any) {
-        let alertController = UIAlertController(title: "Create a new Todo Item ", message: nil, preferredStyle: .alert)
-        
-        alertController.addTextField { (textField) in
-            textField.placeholder = "New item name"
-        }
-        
-        alertController.addTextField { (textDetailField) in
-            textDetailField.placeholder = "Description"
-        }
-        
-        let alertAction1 = UIAlertAction(title: "Cancel", style: .cancel) { (alert) in
-            
-        }
-        
-        let alertAction2 = UIAlertAction(title: "Create", style: .destructive) { (alert) in
-            //Add new item
-            let newItem = alertController.textFields![0].text
-            let newDetail = alertController.textFields![1].text
-            
-            if newItem != "" {
-                addItem(nameItem: newItem!, descriptionItem: newDetail!)
-            }
-            
-            
-            self.tableView.reloadData()
-        }
-        
-        alertController.addAction(alertAction1)
-        alertController.addAction(alertAction2)
-
-        present(alertController, animated: true , completion: nil)
-        
-    }
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
