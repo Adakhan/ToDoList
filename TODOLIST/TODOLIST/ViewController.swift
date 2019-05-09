@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var titleOutlet: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
-    
+ 
     
     @IBAction func addButton(_ sender: Any) {
         let newName = nameTextField.text
@@ -22,16 +22,9 @@ class ViewController: UIViewController {
         if newName != "" {
             addItem(nameItem: newName!, descriptionItem: newDesc!)
         }
-        
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       
     }
-    
-
-
 }

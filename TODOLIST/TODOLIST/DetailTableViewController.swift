@@ -17,15 +17,11 @@ class DetailTableViewController: UITableViewController {
     var subtitleString = String()
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         itemTitle.text = titleString
         itemSubtitle.text = subtitleString
-        
-
     }
-
-    
-
 }

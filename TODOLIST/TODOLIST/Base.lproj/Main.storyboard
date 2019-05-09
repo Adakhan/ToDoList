@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--TODOLIST-->
+        <!--ToDoList Search-->
         <scene sceneID="tPE-EN-O67">
             <objects>
                 <tableViewController id="0RE-Ga-uIr" customClass="TableViewController" customModule="TODOLIST" customModuleProvider="target" sceneMemberID="viewController">
@@ -57,7 +57,7 @@
                             <outlet property="delegate" destination="0RE-Ga-uIr" id="1hQ-U5-Lmo"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="TODOLIST" id="ZyE-l0-6dk">
+                    <navigationItem key="navigationItem" title="ToDoList Search" id="ZyE-l0-6dk">
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="WLf-Ey-i6q">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -65,8 +65,19 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="zrg-5D-gvc" id="MN0-x5-pw3"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ftV-L8-ghe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="zrg-5D-gvc">
+                    <connections>
+                        <outlet property="delegate" destination="0RE-Ga-uIr" id="Jl2-pt-EL5"/>
+                        <outlet property="searchContentsController" destination="0RE-Ga-uIr" id="lph-Rh-661"/>
+                        <outlet property="searchResultsDataSource" destination="0RE-Ga-uIr" id="k8M-Ve-gxp"/>
+                        <outlet property="searchResultsDelegate" destination="0RE-Ga-uIr" id="5VL-Jg-L5g"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="831.20000000000005" y="39.130434782608695"/>
         </scene>
@@ -79,7 +90,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="sectionIndexBackgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" id="kjF-RL-dRI">
+                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" id="kjF-RL-dRI">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

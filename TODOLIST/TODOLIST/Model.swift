@@ -9,41 +9,41 @@
 import Foundation
 
 
-var todoItems: [[String: Any]] {
+class Tasks {
+    let name: String
+    let description: String
+    var completed: Bool
     
-    set {
-        UserDefaults.standard.set(newValue, forKey: "TodoDataKey")
-        UserDefaults.standard.synchronize()
-    }
-    
-    get {
-        if let array = UserDefaults.standard.array(forKey: "TodoDataKey") as? [[String: Any]] {
-            return  array
-        } else {
-            return  []
-        }
+    init(name: String, description: String, completed: Bool) {
+        self.name = name
+        self.description = description
+        self.completed = completed
     }
 }
+
+var todoTasks = [Tasks]()
+
 
 
 func addItem(nameItem: String, descriptionItem: String, isCompleted: Bool = false) {
-    todoItems.append(["Name": nameItem, "Description": descriptionItem, "isCompleted": isCompleted])
+    todoTasks.append(Tasks(name: nameItem, description: descriptionItem, completed: isCompleted))
 }
 
 func removeItem(at index: Int) {
-    todoItems.remove(at: index)
+    todoTasks.remove(at: index)
 }
 
 func moveItem(fromIndex: Int, toIndex: Int) {
-    let from = todoItems[fromIndex]
-    todoItems.remove(at: fromIndex)
-    todoItems.insert(from, at: toIndex)
+    let from = todoTasks[fromIndex]
+    todoTasks.remove(at: fromIndex)
+    todoTasks.insert(from, at: toIndex)
 }
 
 func changeState(at item: Int) -> Bool {
-    todoItems[item]["isCompleted"] = !(todoItems[item]["isCompleted"] as! Bool)
+    todoTasks[item].completed = !(todoTasks[item].completed)
     
-    return (todoItems[item]["isCompleted"] as! Bool)
+    return (todoTasks[item].completed)
+    
 }
 
 
