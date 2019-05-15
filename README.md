@@ -1,2 +1,2 @@
 # todolist
-todolist demo iOS app
+ToDoList demo iOS app
