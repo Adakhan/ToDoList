@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class AddTaskViewController: UIViewController {
     
     @IBOutlet weak var titleOutlet: UILabel!
     @IBOutlet weak var nameTextField: UITextField!

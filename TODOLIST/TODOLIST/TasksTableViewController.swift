@@ -8,22 +8,20 @@
 
 import UIKit
 
-class TableViewController: UITableViewController{
+class TasksTableViewController: UITableViewController{
     
-    var itemTitle1 = ""
-    var itemSubtitle1 = ""
+    var currentTitle = ""
+    var currentSubtitle = ""
     
     let searchController = UISearchController(searchResultsController: nil)
     
     var filteredTasks = [Tasks]()
     
-
     
     @IBAction func pushEditAction(_ sender: Any) {
         tableView.setEditing(!tableView.isEditing, animated: true)
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
@@ -68,8 +66,6 @@ class TableViewController: UITableViewController{
     }
 
     
-    
-    
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -81,7 +77,6 @@ class TableViewController: UITableViewController{
         if isFiltering() {
             return filteredTasks.count
         }
-        
         return todoTasks.count
     }
     
@@ -97,8 +92,8 @@ class TableViewController: UITableViewController{
         
         let currentItem = task
 
-        itemTitle1 = currentItem.name
-        itemSubtitle1 = currentItem.description
+        currentTitle = currentItem.name
+        currentSubtitle = currentItem.description
         performSegue(withIdentifier: "detailSegue", sender: self)
     }
     
@@ -108,7 +103,6 @@ class TableViewController: UITableViewController{
         cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellIdentifier")
         cell.accessoryType = .detailDisclosureButton
 
-        
         let task: Tasks
         if isFiltering() {
             task = filteredTasks[indexPath.row]
@@ -119,13 +113,11 @@ class TableViewController: UITableViewController{
         cell.textLabel?.text = (task.name)
         cell.detailTextLabel?.text = (task.description)
         
-        
         if (task.completed) == true {
             cell.imageView?.image = UIImage(named: "check.png")
         } else {
             cell.imageView?.image = UIImage(named: "uncheck.png")
         }
-        
         return cell
     }
     
@@ -167,13 +159,11 @@ class TableViewController: UITableViewController{
         } else {
             tableView.cellForRow(at: indexPath)?.imageView?.image = UIImage(named: "uncheck.png")
         }
-       
     }
 
     
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        
         moveItem(fromIndex: fromIndexPath.row, toIndex: to.row )
         tableView.reloadData()
     }
@@ -182,15 +172,12 @@ class TableViewController: UITableViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let DetailTableViewController = segue.destination as! DetailTableViewController
-        DetailTableViewController.subtitleString = itemSubtitle1
-        DetailTableViewController.titleString = itemTitle1
-        
-        
+        DetailTableViewController.subtitleString = currentSubtitle
+        DetailTableViewController.titleString = currentTitle
     }
-  
 }
 
-extension TableViewController: UISearchResultsUpdating {
+extension TasksTableViewController: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!)
