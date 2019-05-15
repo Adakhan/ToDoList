@@ -22,6 +22,7 @@ class ViewController: UIViewController {
         if newName != "" {
             addItem(nameItem: newName!, descriptionItem: newDesc!)
         }
+        saveData()
     }
     
     override func viewDidLoad() {

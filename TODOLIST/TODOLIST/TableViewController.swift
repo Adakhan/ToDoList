@@ -26,12 +26,24 @@ class TableViewController: UITableViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadData()
+        
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Tasks"
         navigationItem.searchController = searchController
         definesPresentationContext = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        loadData()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        saveData()
     }
     
     //MARK: SERCH BAR

@@ -9,7 +9,7 @@
 import Foundation
 
 
-class Tasks {
+class Tasks : Codable {
     let name: String
     let description: String
     var completed: Bool
@@ -20,6 +20,8 @@ class Tasks {
         self.completed = completed
     }
 }
+
+
 
 var todoTasks = [Tasks]()
 
@@ -43,9 +45,18 @@ func changeState(at item: Int) -> Bool {
     todoTasks[item].completed = !(todoTasks[item].completed)
     
     return (todoTasks[item].completed)
-    
 }
 
+func saveData() {
+    UserDefaults.standard.set(try? PropertyListEncoder().encode(todoTasks), forKey:"todo")
 
+}
+
+func loadData() {
+    if let data = UserDefaults.standard.value(forKey:"todo") as? Data {
+        let task = try? PropertyListDecoder().decode(Array<Tasks>.self, from: data)
+        todoTasks = task!
+    }
+}
 
 
