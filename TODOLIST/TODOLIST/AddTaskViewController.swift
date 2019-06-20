@@ -27,5 +27,7 @@ class AddTaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        nameTextField.becomeFirstResponder()
+        
     }
 }
