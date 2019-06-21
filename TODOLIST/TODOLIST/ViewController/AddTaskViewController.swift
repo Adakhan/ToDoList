@@ -13,7 +13,7 @@ class AddTaskViewController: UIViewController {
     @IBOutlet weak var titleOutlet: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
- 
+    
     
     @IBAction func addButton(_ sender: Any) {
         let newName = nameTextField.text
@@ -28,6 +28,5 @@ class AddTaskViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         nameTextField.becomeFirstResponder()
-        
     }
 }

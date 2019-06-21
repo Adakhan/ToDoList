@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FA1E11B42281C29C00147C78 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddTaskViewController.swift; path = ../../../ToDoList/TODOLIST/TODOLIST/AddTaskViewController.swift; sourceTree = "<group>"; };
+		FA1E11B42281C29C00147C78 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		FABA66AA22722D0900BF9230 /* TODOLIST.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TODOLIST.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FABA66AD22722D0900BF9230 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FABA66B222722D0900BF9230 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -41,6 +41,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA8C2D0A22BD148E004D64B3 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FABA66BF22722D4F00BF9230 /* TasksTableViewController.swift */,
+				FAEDFFA022749B2C00351FB1 /* DetailTableViewController.swift */,
+				FA1E11B42281C29C00147C78 /* AddTaskViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		FA8C2D0B22BD149E004D64B3 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				FABA66AD22722D0900BF9230 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		FA8C2D0C22BD14AA004D64B3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FABA66C122722E6B00BF9230 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		FABA66A122722D0900BF9230 = {
 			isa = PBXGroup;
 			children = (
@@ -60,11 +86,9 @@
 		FABA66AC22722D0900BF9230 /* TODOLIST */ = {
 			isa = PBXGroup;
 			children = (
-				FABA66AD22722D0900BF9230 /* AppDelegate.swift */,
-				FABA66BF22722D4F00BF9230 /* TasksTableViewController.swift */,
-				FAEDFFA022749B2C00351FB1 /* DetailTableViewController.swift */,
-				FABA66C122722E6B00BF9230 /* Model.swift */,
-				FA1E11B42281C29C00147C78 /* AddTaskViewController.swift */,
+				FA8C2D0C22BD14AA004D64B3 /* Model */,
+				FA8C2D0B22BD149E004D64B3 /* AppDelegate */,
+				FA8C2D0A22BD148E004D64B3 /* ViewController */,
 				FABA66B122722D0900BF9230 /* Main.storyboard */,
 				FABA66B622722D0C00BF9230 /* LaunchScreen.storyboard */,
 				FABA66B422722D0C00BF9230 /* Assets.xcassets */,

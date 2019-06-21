@@ -10,9 +10,9 @@ import Foundation
 
 
 class Tasks : Codable {
-    let name: String
-    let description: String
-    var completed: Bool
+    let name: String?
+    let description: String?
+    var completed: Bool?
     
     init(name: String, description: String, completed: Bool) {
         self.name = name
@@ -42,9 +42,9 @@ func moveItem(fromIndex: Int, toIndex: Int) {
 }
 
 func changeState(at item: Int) -> Bool {
-    todoTasks[item].completed = !(todoTasks[item].completed)
+    todoTasks[item].completed = !(todoTasks[item].completed!)
     
-    return (todoTasks[item].completed)
+    return (todoTasks[item].completed!)
 }
 
 func saveData() {
